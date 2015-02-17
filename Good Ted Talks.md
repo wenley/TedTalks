@@ -1,4 +1,8 @@
- World Now:
+# Curated TED Talks
+##### Maintained by Wenley Tong
+
+### World Now
+##### Potential Solutions to problems currently threatening humans and Earth
 * Dan Barber (Sustainable Food)
 - [Internet; PopTech] Dan Nocera (Personalized energy + clean water)
 * Dan Meyer (Math education)
@@ -46,7 +50,8 @@
 - Amanda Burden (Public Spaces)
 
 
-World Future:
+### World Future
+##### Ideas to consider on the time scale of 20+ years
 * David Cameron (Post-Bureaucratic Age)
 * Sendhil Mullainathan (nudges to motivate)
 - Michael Specter (Dangers of Science Denial)
@@ -65,7 +70,8 @@ World Future:
 - Carne Ross (Independent Diplomats)
 - Boyd Varty (What I learned from Nelson Mandela)
 
-Tech (Non-urgent tech developments; cool stuff)
+### Tech
+##### Other cool technical developments
 * Pranav Mistry (Sixth Sense) + Pattie Maes
 - Eric Topol (Wireless Medicine)
 * Gary Flake (Pivot) (+ Tim Berners-Lee (Open info age))
@@ -87,7 +93,8 @@ Tech (Non-urgent tech developments; cool stuff)
 * Ajit Narayanan (A word game to communicate in any language)
 * Hugh Herr (Bionic limbs)
 
-Personal thinking:
+### Personal thinking:
+##### Talks that have heavily influenced my personal philosophy and outlook
 - Simon Sinek (How to inspire others)
 * Dan Buettner (How to live to 100)
 * Elizabeth Gilbert (Creativity + Genii / daemons)
@@ -115,8 +122,8 @@ Personal thinking:
 - Sally Kohn (Emotional Correctness)
 - Stephan Cave (4 stories of death/immortality)
 
-
-Other:
+### Other
+##### Entertaining and/or intriguing talks worth watching
 * Rory Bremner (Obama, Bush, Blair, Brown, Mandela)
 - Scott Kim (Puzzles)
 * Gary Lauder (Take turns)
@@ -140,4 +147,6 @@ Other:
 * Suzana Herculano-Houzel (Human Brains)
 - Nicolas Perony (Simplifying Complexity)
 
-Collections: TEDxNYCSalon
+### Notable Conferences
+##### TEDx conferences that seem to have a high density of good talks
+- TEDxNYCSalon
