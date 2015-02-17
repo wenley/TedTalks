@@ -1,6 +1,27 @@
 # Curated TED Talks
 ##### Maintained by Wenley Tong
 
+**Disclaimer**: Even though I have been convinced by many of these talks, I do not (or no longer) agree with all of them,
+and others I include because I believe they present strong arguments that must be addressed when discussing the relevant topic.
+
+### Great speakers
+##### Individuals with collections of great talks on a subject
+* Hans Rosling
+  - [The best stats you've ever seen](http://www.ted.com/talks/hans_rosling_shows_the_best_stats_you_ve_ever_seen)
+  - [Religions and babies](http://www.ted.com/talks/hans_rosling_religions_and_babies)
+  - [Insights on HIV, in stunning data visuals](http://www.ted.com/talks/hans_rosling_the_truth_about_hiv)
+  - [Let my dataset change your mind](http://www.ted.com/talks/hans_rosling_at_state)
+  - [Global population growth, box by box](http://www.ted.com/talks/hans_rosling_on_global_population_growth)
+  - [The magic washing machine](http://www.ted.com/talks/hans_rosling_and_the_magic_washing_machine)
+  - [New insights on poverty](http://www.ted.com/talks/hans_rosling_reveals_new_insights_on_poverty)
+  - [The good news of the decade](http://www.ted.com/talks/hans_rosling_the_good_news_of_the_decade)
+  - [Asia's rise -- how and when](http://www.ted.com/talks/hans_rosling_asia_s_rise_how_and_when)
+* Ken Robinson
+  - [How schools kill creativity](http://www.ted.com/talks/ken_robinson_says_schools_kill_creativity)
+  - [Bring on the learning revolution!](http://www.ted.com/talks/sir_ken_robinson_bring_on_the_revolution)
+  - [Changing education paradigms](http://www.ted.com/talks/ken_robinson_changing_education_paradigms)
+  - [How to escape education's death valley](http://www.ted.com/talks/ken_robinson_how_to_escape_education_s_death_valley)
+
 ### Ideas
 ##### Potential Solutions to problems threatening humans and Earth
 - Sustainability
@@ -43,23 +64,11 @@
   - David Anderson [Your brain in more than a bag of chemicals](http://www.ted.com/talks/david_anderson_your_brain_is_more_than_a_bag_of_chemicals)
   - Stefan Larsson [What doctors can learn from each other](http://www.ted.com/talks/stefan_larsson_what_doctors_can_learn_from_each_other)
   - Paul Piff [Does money make you mean?](http://www.ted.com/talks/paul_piff_does_money_make_you_mean)
-  * Hans Rosling
-    - [The best stats you've ever seen](http://www.ted.com/talks/hans_rosling_shows_the_best_stats_you_ve_ever_seen)
-    - [Religions and babies](http://www.ted.com/talks/hans_rosling_religions_and_babies)
-    - [Insights on HIV, in stunning data visuals](http://www.ted.com/talks/hans_rosling_the_truth_about_hiv)
-    - [Let my dataset change your mind](http://www.ted.com/talks/hans_rosling_at_state)
-    - [Global population growth, box by box](http://www.ted.com/talks/hans_rosling_on_global_population_growth)
-    - [The magic washing machine](http://www.ted.com/talks/hans_rosling_and_the_magic_washing_machine)
-    - [New insights on poverty](http://www.ted.com/talks/hans_rosling_reveals_new_insights_on_poverty)
-    - [The good news of the decade](http://www.ted.com/talks/hans_rosling_the_good_news_of_the_decade)
-    - [Asia's rise -- how and when](http://www.ted.com/talks/hans_rosling_asia_s_rise_how_and_when)
-
 
 ### World Future
 ##### Ideas to consider on the time scale of 20+ years
 - Education
-  * Dan Meyer (Math education)
-  * Ken Robinson (ALL OF THEM)
+  * Dan Meyer [Math class needs a makeover](http://www.ted.com/talks/dan_meyer_math_curriculum_makeover)
 * David Cameron (Post-Bureaucratic Age)
 * Sendhil Mullainathan (nudges to motivate)
 - Michael Specter (Dangers of Science Denial)
