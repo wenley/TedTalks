@@ -13,6 +13,38 @@ def load_talk(cursor, url):
   talk = Talk(url)
   cursor.execute('''INSERT INTO talks VALUES ('%s', '%s', '%s')''' % (talk.url, talk.author(), talk.title()))
 
+def test_talks(data):
+  talks = map(lambda url: Talk(url), data)
+  def helper(talk):
+    print "Loading", talk.url
+    try:
+      return talk.speaker()
+    except:
+      print "Failed"
+      return None
+  speakers = map(helper, talks)
+  print speakers
+  speakers = map(helper, talks)
+
+def verify_no_transcript():
+  problematic_talks = [
+    'http://www.ted.com/talks/ken_robinson_changing_education_paradigms',
+    'http://www.ted.com/talks/diane_j_savino_the_case_for_same_sex_marriage',
+    'http://poptech.org/popcasts/dan_nocera_personalized_energy',
+    'http://www.ted.com/talks/srikumar_rao_plug_into_your_hard_wired_happiness',
+    'http://www.ted.com/talks/bobby_mcferrin_hacks_your_brain_with_music',
+    'http://www.ted.com/talks/jesse_schell_when_games_invade_real_life',
+  ]
+
+  def helper(url):
+    print url
+    try:
+      Talk(url).speaker()
+    except Exception as e:
+      print e
+  map(helper, problematic_talks)
+  # All came back as 404
+
 if __name__ == '__main__':
   data = [
     'http://www.ted.com/talks/hans_rosling_shows_the_best_stats_you_ve_ever_seen',
@@ -26,7 +58,7 @@ if __name__ == '__main__':
     'http://www.ted.com/talks/hans_rosling_asia_s_rise_how_and_when',
     'http://www.ted.com/talks/ken_robinson_says_schools_kill_creativity',
     'http://www.ted.com/talks/sir_ken_robinson_bring_on_the_revolution',
-    'http://www.ted.com/talks/ken_robinson_changing_education_paradigms',
+    # 'http://www.ted.com/talks/ken_robinson_changing_education_paradigms',
     'http://www.ted.com/talks/ken_robinson_how_to_escape_education_s_death_valley',
     'http://www.ted.com/talks/clay_shirky_how_cellphones_twitter_facebook_can_make_history',
     'http://www.ted.com/talks/clay_shirky_how_cognitive_surplus_will_change_the_world',
@@ -44,7 +76,7 @@ if __name__ == '__main__':
     'http://www.ted.com/talks/julian_treasure_how_to_speak_so_that_people_want_to_listen',
     'http://www.ted.com/talks/julian_treasure_5_ways_to_listen_better',
     'http://www.ted.com/talks/julian_treasure_shh_sound_health_in_8_steps',
-    'http://www.ted.com/talks/dan_barber_how_i_fell_in_love_with_a_fish)',
+    'http://www.ted.com/talks/dan_barber_how_i_fell_in_love_with_a_fish',
     'http://www.ted.com/talks/dan_barber_s_surprising_foie_gras_parable',
     'http://www.ted.com/talks/jamie_oliver',
     'http://www.ted.com/talks/jonas_eliasson_how_to_solve_traffic_jams',
@@ -62,7 +94,7 @@ if __name__ == '__main__':
     'http://www.ted.com/talks/philip_howard',
     'http://www.ted.com/talks/michael_sandel_the_lost_art_of_democratic_debate',
     'http://www.ted.com/talks/lawrence_lessig_we_the_people_and_the_republic_we_must_reclaim',
-    'http://www.ted.com/talks/diane_j_savino_the_case_for_same_sex_marriage',
+    # 'http://www.ted.com/talks/diane_j_savino_the_case_for_same_sex_marriage',
     'http://www.ted.com/talks/tim_jackson_s_economic_reality_check',
     'http://www.ted.com/talks/dambisa_moyo_is_china_the_new_idol_for_emerging_economies',
     'http://www.ted.com/talks/david_puttnam_what_happens_when_the_media_s_priority_is_profit',
@@ -98,7 +130,7 @@ if __name__ == '__main__':
     'http://www.ted.com/talks/adam_grosser_and_his_sustainable_fridge',
     'http://www.ted.com/talks/nathan_myhrvold_could_this_laser_zap_malaria',
     'http://www.ted.com/talks/krista_donaldson_the_80_prosthetic_knee_that_s_changing_lives',
-    'http://poptech.org/popcasts/dan_nocera_personalized_energy',
+    # 'http://poptech.org/popcasts/dan_nocera_personalized_energy',
     'http://www.ted.com/talks/paul_stamets_on_6_ways_mushrooms_can_save_the_world',
     'http://www.ted.com/talks/geraldine_hamilton_body_parts_on_a_chip',
     'http://www.ted.com/talks/andreas_raptopoulos_no_roads_there_s_a_drone_for_that',
@@ -131,7 +163,7 @@ if __name__ == '__main__':
     'http://www.ted.com/talks/barry_schwartz_on_the_paradox_of_choice',
     'http://www.ted.com/talks/dan_ariely_asks_are_we_in_control_of_our_own_decisions',
     'http://www.ted.com/talks/david_byrne_how_architecture_helped_music_evolve',
-    'http://www.ted.com/talks/srikumar_rao_plug_into_your_hard_wired_happiness',
+    # 'http://www.ted.com/talks/srikumar_rao_plug_into_your_hard_wired_happiness',
     'http://www.ted.com/talks/philip_zimbardo_prescribes_a_healthy_take_on_time',
     'http://www.ted.com/talks/chip_conley_measuring_what_makes_life_worthwhile',
     'http://www.ted.com/talks/elif_shafak_the_politics_of_fiction',
@@ -150,11 +182,11 @@ if __name__ == '__main__':
     'http://www.ted.com/talks/rory_bremner_s_one_man_world_summit',
     'http://www.ted.com/talks/scott_kim_takes_apart_the_art_of_puzzles',
     'http://www.ted.com/talks/gary_lauder_s_new_traffic_sign_take_turns',
-    'http://www.ted.com/talks/bobby_mcferrin_hacks_your_brain_with_music',
+    # 'http://www.ted.com/talks/bobby_mcferrin_hacks_your_brain_with_music',
     'http://www.ted.com/talks/beau_lotto_optical_illusions_show_how_we_see',
     'http://www.ted.com/talks/theo_jansen_creates_new_creatures',
     'http://www.ted.com/talks/adora_svitak',
-    'http://www.ted.com/talks/jesse_schell_when_games_invade_real_life',
+    # 'http://www.ted.com/talks/jesse_schell_when_games_invade_real_life',
     'http://www.ted.com/talks/tom_wujec_build_a_tower',
     'http://www.ted.com/talks/robert_full_learning_from_the_gecko_s_tail',
     'http://www.ted.com/talks/laurie_santos',
@@ -167,3 +199,9 @@ if __name__ == '__main__':
     'http://www.ted.com/talks/suzana_herculano_houzel_what_is_so_special_about_the_human_brain',
     'http://www.ted.com/talks/nicolas_perony_puppies_now_that_i_ve_got_your_attention_complexity_theory',
   ]
+
+  # Verify talks have transcripts
+  test_talks(data[:2])
+  # Some don't - comment out those that don't
+
+  # verify_no_transcript()
