@@ -1,10 +1,6 @@
 
-import urllib2
 from bs4 import BeautifulSoup
 from talk import Talk
-
-def raw_html_for_url(url):
-  return urllib2.urlopen(url).read()
 
 if __name__ == '__main__':
   with open('test_data/lessig.html') as f:

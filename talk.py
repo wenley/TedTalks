@@ -1,3 +1,10 @@
+
+from bs4 import BeautifulSoup
+import urllib2
+
+def raw_html_for_url(url):
+  return urllib2.urlopen(url).read()
+
 class Talk(object):
   def __init__(self, url):
     self.url = url
