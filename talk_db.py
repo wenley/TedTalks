@@ -58,7 +58,7 @@ def verify_no_transcript():
   map(helper, problematic_talks)
   # All came back as 404
 
-if __name__ == '__main__':
+def migration1():
   data = [
     'http://www.ted.com/talks/hans_rosling_shows_the_best_stats_you_ve_ever_seen',
     'http://www.ted.com/talks/hans_rosling_religions_and_babies',
@@ -212,13 +212,21 @@ if __name__ == '__main__':
     'http://www.ted.com/talks/suzana_herculano_houzel_what_is_so_special_about_the_human_brain',
     'http://www.ted.com/talks/nicolas_perony_puppies_now_that_i_ve_got_your_attention_complexity_theory',
   ]
+  init_db()
+  cursor = connection.cursor()
 
+  def helper(url):
+    print 'Loading %s...' % (url,)
+    load_talk(cursor, url)
+  map(helper, data)
+  connection.commit()
+
+if __name__ == '__main__':
   # Verify talks have transcripts
   # test_talks(data[:2])
   # Some don't - comment out those that don't
 
   # verify_no_transcript()
-  init_db()
-  cursor = connection.cursor()
-  load_talk(cursor, data[0])
-  print fetch_talk(cursor, data[0])
+
+  # migration1()
+  pass
