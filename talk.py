@@ -28,6 +28,9 @@ class Talk(object):
     if transcript:
       self._transcript = transcript
 
+  def __repr__(self):
+    return "<Talk '%s' by %s>" % (self.title(), self.speaker())
+
   @cached_value
   def speaker(self):
     return self.transcript_doc().find('meta', attrs={'name': 'author'})['content'].strip()
