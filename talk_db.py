@@ -3,15 +3,28 @@ import sqlite3
 from talk import Talk
 
 connection = sqlite3.connect('talks.sqlite')
+connection.row_factory = sqlite3.Row
 
 def init_db():
   cursor = connection.cursor()
-  c.execute('''CREATE TABLE talks (url text, author text, title text)''')
+  cursor.execute('''CREATE TABLE talks (url TEXT, speaker TEXT, title TEXT)''')
+  cursor.execute('''CREATE TABLE transcripts (talk_id INT, words TEXT)''')
   connection.commit()
 
 def load_talk(cursor, url):
   talk = Talk(url)
-  cursor.execute('''INSERT INTO talks VALUES ('%s', '%s', '%s')''' % (talk.url, talk.author(), talk.title()))
+
+  query = '''INSERT INTO talks VALUES ('%s', '%s', '%s');''' % (talk.url, talk.speaker().replace("'", "''"), talk.title().replace("'", "''"))
+  cursor.execute(query)
+
+  query = '''INSERT INTO transcripts VALUES ('%s', '%s')''' % (cursor.lastrowid, talk.transcript().replace("'", "''"))
+  cursor.execute(query)
+
+def fetch_talk(cursor, url):
+  query = '''SELECT * FROM talks INNER JOIN transcripts WHERE talks.rowid=transcripts.talk_id AND talks.url='%s' ''' % (url.replace("'", "''"),)
+  cursor.execute(query)
+  obj = cursor.fetchone()
+  return Talk(url=url, speaker=obj['speaker'], title=obj['title'], transcript=obj['words'])
 
 def test_talks(data):
   talks = map(lambda url: Talk(url), data)
@@ -201,7 +214,11 @@ if __name__ == '__main__':
   ]
 
   # Verify talks have transcripts
-  test_talks(data[:2])
+  # test_talks(data[:2])
   # Some don't - comment out those that don't
 
   # verify_no_transcript()
+  init_db()
+  cursor = connection.cursor()
+  load_talk(cursor, data[0])
+  print fetch_talk(cursor, data[0])
