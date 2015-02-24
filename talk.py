@@ -16,10 +16,17 @@ def cached_value(method):
   return wrap
 
 class Talk(object):
-  def __init__(self, url):
+  def __init__(self, url, speaker=None, title=None, transcript=None):
     self.url = url
     self.language_url = url + '?language=en'
     self.transcript_url = url + '/transcript?language=en'
+
+    if speaker:
+      self._speaker = speaker
+    if title:
+      self._title = title
+    if transcript:
+      self._transcript = transcript
 
   @cached_value
   def speaker(self):
