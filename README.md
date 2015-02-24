@@ -4,7 +4,7 @@ Curated List of Good TED Talks
 This project was started in high school when I watched a bunch of TED talks and wanted to keep track of the ones I really liked. It started as just a simple list, but categories soon formed.
 
 Later in life, enough friends asked me to share my list with them that I was nudged to sharing it online. Not one for writing many words, a blog did not appeal to me,
-but just posting a barebones list was enough.
+but just posting [a barebones list](Good Ted Talks.md) was enough.
 
 However, the categories I used to have no longer made sense, but the number of talks I wanted to share was just a smidge too large to make re-sorting them easy.
 Naturally, the first solution I reached for was to cluster them based on their transcripts, which brings me to the current state of this project.
