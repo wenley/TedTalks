@@ -2,3 +2,4 @@ beautifulsoup4==4.3.2
 lda==0.3.2
 numpy==1.9.1
 pbr==0.10.7
+scipy==0.15.1
