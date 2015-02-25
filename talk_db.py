@@ -24,7 +24,7 @@ def fetch_talk(cursor, url):
   query = '''SELECT * FROM talks INNER JOIN transcripts WHERE talks.rowid=transcripts.talk_id AND talks.url='%s' ''' % (url.replace("'", "''"),)
   cursor.execute(query)
   obj = cursor.fetchone()
-  return Talk(url=obj['url'], speaker=obj['speaker'], title=obj['title'], transcript=obj['words'])
+  return Talk.from_sql_row(obj)
 
 def all_talks(limit=None):
   cursor = connection.cursor()
@@ -35,9 +35,7 @@ def all_talks(limit=None):
   else:
     objs = cursor.fetchall()
 
-  def row_to_talk(obj):
-    return Talk(url=obj['url'], speaker=obj['speaker'], title=obj['title'], transcript=obj['words'])
-  return map(row_to_talk, objs)
+  return map(Talk.from_sql_row, objs)
 
 def test_talks(data):
   talks = map(lambda url: Talk(url), data)

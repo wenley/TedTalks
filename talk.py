@@ -31,6 +31,10 @@ class Talk(object):
   def __repr__(self):
     return "<Talk '%s' by %s>" % (self.title(), self.speaker())
 
+  @classmethod
+  def from_sql_row(class_, obj):
+    return class_(url=obj['url'], speaker=obj['speaker'], title=obj['title'], transcript=obj['words'])
+
   @cached_value
   def speaker(self):
     return self.transcript_doc().find('meta', attrs={'name': 'author'})['content'].strip()
