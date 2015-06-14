@@ -9,6 +9,17 @@ but just posting [a barebones list](Good Ted Talks.md) was enough.
 However, the categories I used to have no longer made sense, but the number of talks I wanted to share was just a smidge too large to make re-sorting them easy.
 Naturally, the first solution I reached for was to cluster them based on their transcripts, which brings me to the current state of this project.
 
+### Notes
+
+#### VirtualEnv setup
+`source venv/bin/activate`
+
+#### Testing distance computation
+`python compute_distances.py`
+
+#### Storing requirements
+`pip freeze > requirements.txt`
+
 ### TODO
 - Populate database with objects
 - Scrape transcripts of talks to html files
