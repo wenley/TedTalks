@@ -240,4 +240,13 @@ if __name__ == '__main__':
   # verify_no_transcript()
 
   # migration1()
-  pass
+  import sys
+
+  count_before = len(all_talks())
+  url = sys.argv[1]
+  load_talk(connection.cursor(), url)
+  count_after = len(all_talks())
+  if count_before +1 != count_after:
+    print "Something went wrong. Started with %s talks, ended with %s talks" % (count_before, count_after)
+  else:
+    print "Added talk #%s: %s" % (count_after, url)
