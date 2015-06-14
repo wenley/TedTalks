@@ -29,7 +29,7 @@ class Talk(object):
       self._transcript = transcript
 
   def __repr__(self):
-    return "<Talk '%s' by %s>" % (self.title(), self.speaker())
+    return "<Talk '%s' by %s>" % (self.title().encode('utf-8'), self.speaker().encode('utf-8'))
 
   @classmethod
   def from_sql_row(class_, obj):
