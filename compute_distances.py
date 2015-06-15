@@ -31,9 +31,10 @@ def model_for_matrix(X):
   model = lda.LDA(n_topics=20, n_iter=100, random_state=19)
   return model.fit(X)
 
-if __name__ == "__main__":
-  talks = all_talks()
+def cosine_similarity(a, b):
+  return numpy.dot(a, b) / (numpy.linalg.norm(a) * numpy.linalg.norm(b))
 
+def distances(talks):
   X = word_matrix(talks)
   model = model_for_matrix(X)
 
@@ -41,12 +42,22 @@ if __name__ == "__main__":
   min_val = doc_topics.max()
   normalized = doc_topics / min_val
 
-  def cosine_similarity(a, b):
-    return numpy.dot(a, b) / (numpy.linalg.norm(a) * numpy.linalg.norm(b))
-
+  d = defaultdict(lambda: {})
   for i in xrange(len(normalized)):
     for j in xrange(i + 1, len(normalized)):
       distance = cosine_similarity(normalized[i], normalized[j])
-      print -1 / math.log(distance), talks[i], talks[j]
+      d[i][j] = distance
+      d[j][i] = distance
+  return d
 
+if __name__ == "__main__":
+  talks = all_talks()
+
+  d = distances(talks)
+
+  for i in xrange(len(d)):
+    for j in xrange(len(d[i])):
+      if i == j:
+        continue
+      print -1 / math.log(d[i][j]), talks[i], talks[j]
 
