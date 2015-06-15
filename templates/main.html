@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block body %}
+  <p>Number of talks: {{ num_talks }}</p>
+  <p>Number of edges: {{ num_edges }}</p>
+  <ul>
+    {% for talk in talks %}
+      <li>{{ talk.title() }}</li>
+    {% endfor %}
+  </ul>
+  <ul>
+    {% for edge in edges %}
+      <li>{{ edge.from }}, {{ edge.to }} = {{ edge.weight }}</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
