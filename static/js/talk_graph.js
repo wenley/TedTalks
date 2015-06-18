@@ -4,26 +4,26 @@ initialize = function() {
   var color = d3
     .scale
     .category20();
-  var force = d3
-    .layout
-    .force()
-    .charge(-120)
-    .linkDistance(30)
-    .size([width, height]);
 
   console.log("In context")
   return {
     width: width,
     height: height,
     color: color,
-    force: force,
   }
 }
 
 drawGraph = function(svg, context) {
   console.log("Drawing graph")
 
-  var force = context.force;
+  var force = d3
+    .layout
+    .force()
+    .charge(-120)
+    .linkDistance(function(link) {
+      return 30 * link.value;
+    })
+    .size([context.width, context.height]);
 
   d3.json("edges.json", function(error, graph) {
     if (error) throw error;
