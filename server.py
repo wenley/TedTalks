@@ -22,8 +22,7 @@ import numpy
 def edges(talks):
   edge_scores = scores(similarities(talks))
   raw_scores = [score for inner in edge_scores.itervalues() for score in inner.itervalues()]
-  top_20_percent_cutoff = numpy.percentile(raw_scores, 95)
-
+  top_20_percent_cutoff = numpy.percentile(raw_scores, 80)
   normalize = lambda score: score / top_20_percent_cutoff
 
   num_nodes = max_nodes if max_nodes else len(edge_scores)
@@ -31,10 +30,9 @@ def edges(talks):
   e = []
   for i in xrange(num_nodes):
     for j in xrange(i + 1, num_nodes):
-      if edge_scores[i][j] < top_20_percent_cutoff:
-        continue
       e.append({ 'from': i, 'to': j, 'weight': normalize(edge_scores[i][j])})
       e.append({ 'from': j, 'to': i, 'weight': normalize(edge_scores[i][j])})
+
   return e
 
 talks = all_talks()

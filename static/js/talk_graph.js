@@ -1,6 +1,6 @@
 initialize = function() {
-  var width = 960;
-  var height = 500;
+  var width = 1200;
+  var height = 800;
   var color = d3
     .scale
     .category20();
@@ -16,20 +16,28 @@ initialize = function() {
 drawGraph = function(svg, context) {
   console.log("Drawing graph")
 
+  var baseLinkLength = 50
+  var linkValueCutoff = 1.2
+
   var force = d3
     .layout
     .force()
     .charge(-120)
     .linkDistance(function(link) {
-      return 30 * link.value;
+      return baseLinkLength * link.value;
     })
     .size([context.width, context.height]);
 
   d3.json("edges.json", function(error, graph) {
     if (error) throw error;
 
+    // Only make relevant links strong
+    linksToInclude = graph.links.filter(function(link) {
+      return link.value >= linkValueCutoff;
+    });
+
     force.nodes(graph.nodes)
-    .links(graph.links)
+    .links(linksToInclude)
     .start();
 
     var link = svg.selectAll(".link")
