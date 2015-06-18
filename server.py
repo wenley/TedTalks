@@ -42,5 +42,19 @@ def main():
       num_edges=str(len(e)),
       edges=e)
 
+@app.route('/static/js/<path:path>')
+def send_js(path):
+  return send_from_directory('static/js', path)
+
+@app.route('/edges.json')
+def edges():
+  nodes = [{ 'title': talk.title() } for talk in talks]
+  links = [{
+    'source': edge['from'],
+    'target': edge['to'],
+    'value': edge['weight'],
+    } for edge in e]
+  return jsonify(nodes=nodes, links=links)
+
 if __name__ == "__main__":
   app.run()
