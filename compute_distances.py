@@ -34,7 +34,10 @@ def model_for_matrix(X):
 def cosine_similarity(a, b):
   return numpy.dot(a, b) / (numpy.linalg.norm(a) * numpy.linalg.norm(b))
 
-def distances(talks):
+# Range of values: (0, 1)
+# 1 = identical
+# 0 = no relation
+def similarities(talks):
   X = word_matrix(talks)
   model = model_for_matrix(X)
 
@@ -50,14 +53,71 @@ def distances(talks):
       d[j][i] = distance
   return d
 
+# Range of values: (1, Infinity)
+# Infinity = Identical
+# 1 = no relation
+def score(similarity):
+  return -1 /math.log(similarity)
+
+def scores(d):
+  score = lambda similarity: -1 / math.log(similarity)
+
+  return {
+      i: {
+        j: score(sim) for j, sim in inner.iteritems()
+        } for i, inner in d.iteritems()
+      }
+
+# Range of values: (1, Infinity)
+# 1 = identical
+# Infinity = no relation
+def distances(d):
+  raw_scores = [score(value) for inner in d.itervalues() for value in inner.itervalues()]
+  cutoff_score = numpy.percentile(raw_scores, 80)
+
+  distance = lambda score: 1 + (cutoff_score / score)
+  squared = lambda x: x * x
+
+  return {
+      i: {
+        j: squared(distance(score(similarity)))
+        for j, similarity in inner.iteritems()
+        } for i, inner in d.iteritems()
+      }
+
+def print_stats(raw):
+  print "Mean:", numpy.mean(raw)
+  print "StdD:", numpy.std(raw)
+  print "80th:", numpy.percentile(raw, 80)
+  print "90th:", numpy.percentile(raw, 90)
+  print "95th:", numpy.percentile(raw, 95)
+  print numpy.histogram(raw, 30)
+
 if __name__ == "__main__":
   talks = all_talks()
 
-  d = distances(talks)
+  d = similarities(talks)
+  dists = distances(d)
+  num_talks = len(talks)
+  num_to_display = 10
 
-  for i in xrange(len(d)):
-    for j in xrange(len(d[i])):
-      if i == j:
-        continue
-      print -1 / math.log(d[i][j]), talks[i], talks[j]
+  # for i in xrange(0, num_talks, num_talks / num_to_display):
+  #   for j in xrange(0, num_talks, num_talks / num_to_display):
+  #     if i == j:
+  #       continue
+  #     similarity = d[i][j]
+  #     distance = dists[i][j]
+  #     print similarity, score(similarity), distance
 
+  raw_sims = [s for inner in d.itervalues() for s in inner.itervalues()]
+  raw_scores = [score(s) for s in raw_sims]
+  raw_distances = [dist for inner in dists.itervalues() for dist in inner.itervalues()]
+
+  print "Similarities:"
+  print_stats(raw_sims)
+
+  print "\n\nScores:"
+  print_stats(raw_scores)
+  
+  print "\n\nDistances:"
+  print_stats(raw_distances)
