@@ -44,11 +44,7 @@ e = edges(talks)
 
 @app.route('/')
 def main():
-  return render_template('main.html',
-      num_talks=str(len(talks)),
-      talks=talks,
-      num_edges=str(len(e)),
-      edges=e)
+  return render_template('main.html')
 
 @app.route('/static/js/<path:path>')
 def send_js(path):

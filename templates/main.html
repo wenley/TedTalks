@@ -4,17 +4,3 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
   <script type="text/javascript" charset="utf-8" src="/static/js/talk_graph.js"></script>
 {% endblock %}
-{% block body %}
-  <p>Number of talks: {{ num_talks }}</p>
-  <p>Number of edges: {{ num_edges }}</p>
-  <ul>
-    {% for talk in talks %}
-      <li>{{ talk.title() }}</li>
-    {% endfor %}
-  </ul>
-  <ul>
-    {% for edge in edges %}
-      <li>{{ edge.from }}, {{ edge.to }} = {{ edge.weight }}</li>
-    {% endfor %}
-  </ul>
-{% endblock %}
