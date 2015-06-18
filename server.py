@@ -13,20 +13,28 @@ from flask import send_from_directory
 from flask import jsonify
 
 from talk_db import all_talks
-from compute_distances import distances
+from compute_distances import scores, similarities
 
-max_nodes = 10
+max_nodes = None
 
 # TODO : move into appropriate file
+import numpy
 def edges(talks):
-  d = distances(talks)
-  num_nodes = max_nodes if max_nodes else len(d)
+  edge_scores = scores(similarities(talks))
+  raw_scores = [score for inner in edge_scores.itervalues() for score in inner.itervalues()]
+  top_20_percent_cutoff = numpy.percentile(raw_scores, 95)
+
+  normalize = lambda score: score / top_20_percent_cutoff
+
+  num_nodes = max_nodes if max_nodes else len(edge_scores)
 
   e = []
   for i in xrange(num_nodes):
     for j in xrange(i + 1, num_nodes):
-      e.append({ 'from': i, 'to': j, 'weight': d[i][j]})
-      e.append({ 'from': j, 'to': i, 'weight': d[i][j]})
+      if edge_scores[i][j] < top_20_percent_cutoff:
+        continue
+      e.append({ 'from': i, 'to': j, 'weight': normalize(edge_scores[i][j])})
+      e.append({ 'from': j, 'to': i, 'weight': normalize(edge_scores[i][j])})
   return e
 
 talks = all_talks()
