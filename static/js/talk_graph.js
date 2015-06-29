@@ -19,6 +19,8 @@ drawGraph = function(svg, context) {
   var baseLinkLength = 50
   var linkValueCutoff = 1.2
 
+  backgroundDraggable(svg);
+
   var force = d3
     .layout
     .force()
@@ -59,12 +61,13 @@ drawGraph = function(svg, context) {
 
     force.on("tick", function() {
       link.attr("x1", function(d) { return d.source.x; })
-      .attr("y1", function(d) { return d.source.y; })
-      .attr("x2", function(d) { return d.target.x; })
-      .attr("y2", function(d) { return d.target.y; });
+          .attr("y1", function(d) { return d.source.y; })
+          .attr("x2", function(d) { return d.target.x; })
+          .attr("y2", function(d) { return d.target.y; });
 
       node.attr("cx", function(d) { return d.x; })
-      .attr("cy", function(d) { return d.y; });
+          .attr("cy", function(d) { return d.y; })
+          .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
     });
   });
 }
