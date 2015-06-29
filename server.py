@@ -7,13 +7,10 @@ app = Flask(__name__, static_url_path='/static')
 from flaskext.sass import sass
 sass(app, input_dir='static/scss', output_dir='static/css')
 
-# Set routes
-from setup.router import register_routes
-register_routes(app)
-
-# # Setup Javascript
-# from setup.javascripts import register_bundles
-# register_bundles(app)
+# Configuration steps
+import setup
+setup.router.register_routes(app)
+setup.javascripts.register_javascripts(app)
 
 if __name__ == "__main__":
   app.run()

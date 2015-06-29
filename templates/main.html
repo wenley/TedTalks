@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
 {% block head %}
   <link rel="stylesheet" type="text/css" href="/static/css/talk_graph.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
-  <script type="text/javascript" charset="utf-8" src="/static/js/talk_graph.js"></script>
+  {% assets "main.js" %}
+    <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+  {% endassets %}
 {% endblock %}
