@@ -57,8 +57,8 @@ drawGraph = function(svg, context) {
     .enter().append("circle")
     .attr("class", "node")
     .attr("r", 5)
-    .style("fill", function(d) { return context.color(d.group); })
-    // .call(force.drag);
+    .style("fill", function(d) { return context.color(d.group); });
+    node = nodeDraggable(node, force);
 
     node.append("title")
     .text(function(d) { return d.name; });

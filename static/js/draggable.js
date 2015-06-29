@@ -19,13 +19,26 @@ backgroundDraggable = function(svg) {
   return container.call(zoom);
 }
 
-nodeDraggable = function(svg) {
-}
+nodeDraggable = function(nodes, force) {
+  var dragstarted = function(d) {
+    d3.event.sourceEvent.stopPropagation();
+    d3.select(this).classed("dragging", true);
+  }
+  var dragged = function(d) {
+    d3.select(this).attr("cx", d.x = d3.event.x).attr("cy", d.y = d3.event.y);
+  }
+  var dragended = function(d) {
+    d3.select(this).classed("dragging", false);
+    // d3.select(this).classed("fixed", true);
+    force.start();
+  }
 
-draggable = function(svg) {
-  var drag = d3.behaviour.drag()
+  var drag = d3.behavior.drag()
   .origin(function(d) { return d; })
   .on("dragstart", dragstarted)
   .on("drag", dragged)
   .on("dragend", dragended)
+
+  return nodes.call(drag);
 }
+
