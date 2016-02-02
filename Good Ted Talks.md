@@ -75,6 +75,7 @@ and others I include because I believe they present strong arguments that must b
   - Nalini Nadkami [Life science in prison](http://www.ted.com/talks/nalini_nadkarni_life_science_in_prison)
 - Other
   - Rainer Strack [The workforce crisis of 2030 — and how to start solving it now](http://www.ted.com/talks/rainer_strack_the_surprising_workforce_crisis_of_2030_and_how_to_start_solving_it_now)
+  - Jeremy Howard [The wonderful and terrifying implications of computers that can learn](http://www.ted.com/talks/jeremy_howard_the_wonderful_and_terrifying_implications_of_computers_that_can_learn)
   - Mechai Viradaidya [How Mr. Condom made Thailand a better place](http://www.ted.com/talks/mechai_viravaidya_how_mr_condom_made_thailand_a_better_place)
   - Ethan Zuckerman [Listening to global voices](http://www.ted.com/talks/ethan_zuckerman)
   - Chris Anderson [How web video powers global innovation](http://www.ted.com/talks/chris_anderson_how_web_video_powers_global_innovation)
