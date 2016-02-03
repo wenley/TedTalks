@@ -187,6 +187,7 @@ and others I include because I believe they present strong arguments that must b
 - Amy Webb [How I hacked online dating](http://www.ted.com/talks/amy_webb_how_i_hacked_online_dating)
 * Suzana Herculano-Houzel [What is so special about the human brain?](http://www.ted.com/talks/suzana_herculano_houzel_what_is_so_special_about_the_human_brain)
 - Nicolas Perony [Puppies! Now that I've got your attention, complexity theory](http://www.ted.com/talks/nicolas_perony_puppies_now_that_i_ve_got_your_attention_complexity_theory)
+* Laura Sicola [Want to sound like a leader? Start by saying your name right](https://www.youtube.com/watch?v=02EJ1IdC6tE)
 
 ### Notable Conferences
 ##### TEDx conferences that seem to have a high density of good talks
